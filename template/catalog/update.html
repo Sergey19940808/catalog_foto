@@ -1,0 +1,25 @@
+{% extends 'layout/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Редактирование фото{% endblock %}
+
+{% block header %}
+    <h2>
+        Редактирование фото:
+    </h2>
+{% endblock header %}
+
+
+{% block content %}
+    <form method="post" action="{% url 'update' foto.id %}" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">
+                Редактировать
+            </button>
+        {% endbuttons %}
+    </form>
+
+{% endblock content %}

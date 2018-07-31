@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="http://faviconka.ru/ico/faviconka_ru_1392.png" type="image/png">
+    <title>{% block title %}{% endblock %} :: Каталог фотографий</title>
+
+    {% load static %}
+
+      <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}" />
+
+    <!-- load items bootstrap -->
+    {% load bootstrap3 %}
+
+    <!-- load items css and JS -->
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                </button>
+                <a class="navbar-brand" href="{% url 'main' %}">Хранилище изображений</a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'search' %}">Поиск изображений</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <section class="container">
+        <header class="page-header">
+            {% block header %}{% endblock header %}
+        </header>
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
+    </section>
+
+
+    <footer class="footer">
+        <h4>
+            Ваш каталог для хранения фотографий и изображений, и просмотра других картинок
+            "Хранилище изображений - 2017"
+        </h4>
+    </footer>
+
+</body>
+</html>

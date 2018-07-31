@@ -1,0 +1,37 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Домашняя страница{% endblock %}
+
+{% block header %}
+    <h1>
+        Хранилище ваших фотографий
+    </h1>
+{% endblock header %}
+
+
+{% block content %}
+    <h3>
+        Здесь находится список всех добавленных фотографий.
+    </h3>
+    <h4>
+        Нажмите <a href="{% url 'add' %}">
+        сюда</a>, чтобы добавить новое фото.
+    </h4>
+    <h4>
+        Выберите имя фото, чтобы увидеть её подробное описание:
+    </h4>
+
+    <ul>
+        {% for foto in fotos %}
+            <h3>
+                <li>
+                    <a href="{% url 'detail' foto.id %}">
+                        {{ foto.name }}
+                    </a>
+                </li>
+            </h3>
+        {% empty %}
+            <h3>Фотографий не обнаружено</h3>
+        {% endfor %}
+    </ul>
+{% endblock content %}

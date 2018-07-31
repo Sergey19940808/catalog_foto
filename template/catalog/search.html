@@ -1,0 +1,67 @@
+{% extends 'layout/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Поиск фото{% endblock %}
+
+{% block header %}
+    <h2>
+        Поиск изображений:
+    </h2>
+{% endblock header %}
+
+
+{% block content %}
+
+  <h4>
+      Заполните все поля для поиска.
+  </h4>
+        <form action="{% url 'search' %}" method="get">
+       <div class="form-group">
+         <p><label>Введите название</label></p>
+         <p><input type="text" class="form-control" name="query" placeholder="Название изображения" required></p>
+         <small id="name" class="form-text text-muted">Пример: "Моё фото"</small>
+       </div>
+
+       <div class="form-group">
+         <p><label>Введите описание</label></p>
+         <p><textarea  class="form-control" rows="12" name="query" placeholder="Описание изображения"
+         required></textarea></p>
+         <small id="text" class="form-text text-muted">Пример: "Это фото было сделано ..."</small>
+       </div>
+
+       <div class="form-group">
+         <p><label>Введите дату публикации</label></p>
+         <p><input type="text" class="form-control" name="query" placeholder="Дата публикации" required></p>
+         <small id="date_added" class="form-text text-muted">Обязательно вводите дату в таком формате:
+         2017-05-19; то есть, Год-Месяц-День</small>
+       </div>
+       <br>
+       <input type="submit" value="Поиск" class="btn btn-primary">
+   </form>
+
+
+
+    {% if query %}
+        <h2>Результаты запроса: </h2>
+        {% if posts %}
+            <ul>
+                {% for posts in posts %}
+                    <h4>
+                        <li>
+                            <a href="{% url 'detail' posts.id %}">
+                                {{ posts.name }}
+                            </a>
+                        </li>
+                    </h4>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <h4>
+                <li>
+                    Нет найденных фотографий
+                </li>
+            </h4>
+        {% endif %}
+    {% endif %}
+
+{% endblock content %}

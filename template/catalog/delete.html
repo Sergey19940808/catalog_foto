@@ -1,0 +1,57 @@
+{% extends 'layout/base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}Удаление фото{% endblock %}
+
+{% block header %}
+    <h2>
+        Подтверждение удаления фото:
+    </h2>
+{% endblock header %}
+
+
+{% block content %}
+    <form method="post" action="" class="form">
+        {% csrf_token %}
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    <p>
+                        <strong>
+                            Название:
+                        </strong>
+                        {{ foto.name }}
+                    </p>
+                </h3>
+
+                <img src="{{ foto.image.url }}" class="image" />
+
+                <div class="panel-body">
+                    <h3>
+                        <p>
+                            <strong>
+                                Описание:
+                            </strong>
+                            {{ foto.text|linebreaks }}
+                        </p>
+
+                        <p>
+                            <strong>
+                                Дата публикации:
+                            </strong>
+                            {{ foto.date_added|date:'d.m.Y, H:i:s' }}
+                        </p>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        {% buttons %}
+            <button name="submit" class="btn btn-danger">
+                Удалить
+            </button>
+        {% endbuttons %}
+    </form>
+
+{% endblock content %}

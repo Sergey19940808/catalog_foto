@@ -1,0 +1,52 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Описание изображения{% endblock %}
+
+
+{% block header %}
+
+    <h2>
+        Описание выбранного фото:
+    </h2>
+
+{% endblock header %}
+
+{% block content %}
+    <h4>
+        Выбранное фото: {{ foto.name }}
+    </h4>
+    <ul>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>
+                    <p>
+                        <strong>
+                            Название:
+                        </strong>
+                        {{ foto.name }}
+                    </p>
+                </h3>
+                <img src="{{ foto.image.url }}" class="image" />
+                <div class="panel-body">
+                    <h3>
+                        <p>
+                            <strong>
+                                Описание:
+                            </strong>
+                            {{ foto.text|linebreaks }}
+                        </p>
+                        <p>
+                            <strong>
+                                Дата публикации:
+                            </strong>
+                            {{ foto.date_added|date:'d.m.Y, H:i:s' }}
+                        </p>
+
+                        <a href="{% url 'update' foto.id %}"> ▲ Редактировать</a>
+                        <a href="{% url 'delete' foto.id %}"> ✖ Удалить</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </ul>
+{% endblock content %}
