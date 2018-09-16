@@ -5,8 +5,13 @@ from django.db.models import Q
 from django.views.generic import ListView, View, DetailView
 from django.views.generic.edit import DeleteView, FormView, UpdateView
 
+from rest_framework import views
+from rest_framework import generics
+from rest_framework import mixins
+
 from . import models
 from . import forms
+from . import serializers
 
 
 class MainPageView(ListView):
@@ -77,3 +82,8 @@ class DeletePageView(DeleteView):
 
     def get_template_names(self):
         return self.template_name
+
+
+class FotoViewSet(generics.ListCreateAPIView):
+    queryset = models.Foto.objects.all().order_by('name')
+    serializer_class = serializers.FotoSerializer

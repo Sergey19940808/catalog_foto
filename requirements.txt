@@ -1,9 +1,10 @@
 asn1crypto==0.24.0
 cffi==1.11.5
 cryptography==2.3
-Django==2.0.7
+Django==2.1.1
 django-bootstrap3==10.0.1
 django-smartfields==1.0.9
+djangorestframework==3.8.2
 idna==2.7
 Pillow==5.2.0
 pycparser==2.18
